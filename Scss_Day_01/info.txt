@@ -1,0 +1,10 @@
+// So Far --
+
+1.what is Scss or Saas.
+2.What is a preprocessor.
+3.Setup of Scss.
+4.Nesting
+5.Mixins
+5.Partials and Imports
+
+

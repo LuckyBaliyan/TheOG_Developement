@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    font-family:"BBH Sans Bartle", sans-serif;
+    background-color: #0c0c0c;
+    overflow: hidden;
+}
+
+
+h2{
+  opacity: 1;
+  font-weight: bolder;
+  font-size: 2.6rem;
+}
+
+@mixin custome-color($col:white){
+  color:$col;
+}
+
+@mixin cutome-heading(){
+    text-align: center;
+    z-index: 20;
+}
+
+
+@mixin position-absolute(){
+    position: absolute;
+    top:70%;
+    left:50%;
+    text-transform: uppercase;
+    transform: translate(-50%,-50%);
+}
+
+@mixin image-bg(){
+    position: absolute;
+    width:100%;
+    height:100%;
+    z-index:10;
+    inset:0;
+    object-fit: cover;
+}
+
+main{
+    width:100vw;
+    height:100vh;
+    overflow: hidden;
+    display: flex;
+    
+    section{
+        height:inherit;
+        flex-grow: 1;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+
+        h2{
+            @include position-absolute();
+            @include cutome-heading();
+        }
+
+        img{
+            @include image-bg();
+            transform: scale(1.5);
+            transition: inherit;
+        }
+    }
+
+    section::after{
+        content: "";
+        position: absolute;
+        width:120%;
+        height: 100%;
+        top:55%;
+        left:0;
+        z-index: 30;
+        background:linear-gradient(transparent,#000);
+        opacity: 1;
+        transition: all .65s ease-out;     
+    }
+
+
+    section{
+      transition: all .65s ease-out;
+
+        &:hover {
+       flex-grow: 2;
+   
+       &::after {
+         opacity: 0;
+       }
+   
+       img {
+         transform: scale(1);
+          }
+      } 
+    }
+}
+
+
+.bat{
+    @include custome-color(red);
+}
+
+.loki{
+    @include custome-color(#A9DFE8);
+}
+
+.iron{
+    @include custome-color(yellow);
+}
+
+.moon{
+    @include custome-color();
+}
+
+.scarlet{
+    @include custome-color(rgb(228, 118, 228));
+}
+
+@media (max-width:800px) {
+    h2{
+        font-size: 14px;
+    }
+}
+
