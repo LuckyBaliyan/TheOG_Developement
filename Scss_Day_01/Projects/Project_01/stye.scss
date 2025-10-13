@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Orbitron:wght@400..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width:100vw;
+    height:100dvh;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
+body{
+    width:100%;
+    height:100dvh;
+    background-color: #000;
+}
+
+p{
+    font-family: "Neue_Montreal",sans-serif;
+    width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Orbitron", sans-serif;
+}
+
+li{
+    font-family: "Neue_Montreal",sans-serif;
+    font-weight:lighter;
+    color:#e0dede;
+    font-size: 14px;
+}
+
+ul{
+    list-style: none;
+}
+
+button,i,li{
+    cursor: pointer;
+}
+
+img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+
+@mixin flex{
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin small-images{
+    width:2.5rem;
+    aspect-ratio:1;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@mixin btn-style($bg-color:#000,$border:1.2px,$color:#fff){
+    background: $bg-color;
+    padding:.35rem 1rem;
+    border:$border solid #FDFE00;
+    font-family: "Neue_Montreal",sans-serif;
+    inset: 0;
+    outline: 0;
+    border-radius: 14px;
+    color:$color;
+}
+
+@mixin line($color:#FDFE00,$width:23px,$height:3px){
+    background-color: $color;
+    width:$width;
+    height: $height;
+    border-radius: 14px;
+}
+
+@mixin clipped(){
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+}
+
+main{
+    padding:.35em 2.1em;
+}
+
+
+header{
+    img{
+        @include small-images();
+    }
+    
+    nav{
+     color:#ffff;
+     width:100%;
+     @include flex();
+     justify-content: space-between;
+     padding:0.5em 0;
+
+    h3{
+      font-size: 1.5rem;
+    }
+
+    .nav-left{
+        @include flex();
+        justify-content: space-between;
+        width: 45%;
+
+        div{
+            @include flex();
+            gap: 0.8rem;
+        }
+
+        ul{
+            @include flex();
+            gap:1.2rem;
+        }
+    }
+
+    .nav-right{
+        @include flex();
+        gap:2rem;
+        position: relative;
+
+        button{
+            @include btn-style();
+        }
+
+        .line{
+            @include line();
+            position: absolute;
+            left:60%;
+            top:50%;
+            transform: scaleX(1.5);
+            transform-origin: center center;
+        }
+
+        span{
+          @include small-images();
+          background-color: #FDFE00;
+          border-radius: 50%;
+          overflow: hidden;
+          @include flex-center();
+          color: #000;
+        }
+    }
+   }
+}
+
+section{
+    width:100%;
+    height:auto;
+    overflow: hidden;
+
+    .flex{
+        @include flex();
+    }
+
+    .flex-col{
+        @include flex-col();
+    }
+
+    .up{
+        gap:12px;
+        .data-container{
+         background-color: #fff;
+         padding:1em;
+         flex-grow: 3;
+         height:50vh;
+         width:90%;
+         border-radius: 16px;
+         padding:1.3em;
+
+        .relative{
+            position: relative;
+            h1{
+                font-size: 6.5rem;
+                line-height: 0.9;
+                z-index: 2;
+                width:75%;
+                white-space: nowrap;
+                text-transform: uppercase;
+
+                span{
+                    font-size: 18px;
+                    margin-right: 20px;
+                    font-weight: 300;
+                }
+            }
+            p{
+                margin-top: 20px;
+                font-size: 18px;
+            }
+            div{
+                width:15vw;
+                height:20vw;
+                overflow: hidden;
+                position: absolute;
+                top:0;
+                left:30%;
+                z-index: 0;
+                opacity: 0;
+            }
+        }
+
+        .img-wrapper-1{
+            width:65%;
+            height:100%;
+        }
+
+        .clipped{
+            @include clipped();
+        }
+      }
+      .data-container-2{
+        background-color: #FC4100;
+        @include flex-col();
+        width:10%;
+        height: 50vh;
+        border-radius: 16px;
+        padding:1em;
+        position: relative;
+
+        h3{
+            font-size: 3rem;
+            rotate: 90deg;
+        }
+
+        i{
+            position: absolute;
+            top:50%;
+            left:60%;
+            font-size: 1.6rem;
+            rotate: -45deg;
+        }
+        
+      }
+    }
+
+}
+

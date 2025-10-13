@@ -1,0 +1,6 @@
+// LevelProject	Focus
+🟢 Beginner	Animated FAQ	Basic SCSS nesting, transitions
+
+🟡 Intermediate	Product Card Gallery	SCSS components + JS interactivity
+
+🟠 Upper Intermediate	Weather Dashboard	SCSS partials, loops, responsive mixins
