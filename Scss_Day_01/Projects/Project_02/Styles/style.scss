@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+
+:root{
+    --colorPrimaryDark:#121212;
+    --colorSecondaryDark:#1d1d1d;
+    --robotoMono:"Roboto Mono";
+    --textWhite:#F4F2ED;
+    --textGray:#979794;
+}
+
+@font-face {
+    font-family: "satoshi";
+    src: url("/Scss_Day_01/Projects/Project_02/assets/fonts/Satoshi-Regular.woff2"),
+         url("/Scss_Day_01/Projects/Project_02/assets/fonts/Satoshi-Regular.woff");
+}
+
+@font-face {
+    font-family: "chillax";
+    src: url("/Scss_Day_01/Projects/Project_02/assets/fonts/Chillax-Regular.woff2"),
+         url("/Scss_Day_01/Projects/Project_02/assets/fonts/Chillax-Regular.woff");
+}
+
+
+$color-dark:var(--colorPrimaryDark);
+$color-lightDark:var(--colorSecondaryDark);
+$smallText:var(--robotoMono);
+$white:var(--textWhite);
+$gray:var(--textGray);
+
+h1,h2,h3,h4,h5,h6{
+    font-family: chillax,sans-serif,system-ui,
+     -apple-system, BlinkMacSystemFont, 
+     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+     'Open Sans', 'Helvetica Neue';
+}
+
+p{
+    font-family: satoshi,sans-serif,system-ui, 
+    -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+    'Open Sans', 'Helvetica Neue';
+    color:$gray;
+}
+
+li,button,a,span{
+    font-family: $smallText,system-ui, 
+    -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+    'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+li,button{
+    cursor: pointer;
+}
+
+body{
+    background-color: $color-dark;
+    color:$white;
+    font-family: chillax;
+}
+
+@mixin flex-col($gap:1rem){
+    display: flex;
+    flex-direction: column;
+    gap:$gap;
+}
+
+/*As we use rem every where which is related to root element font-size so 
+rather than clamping evry tag we clamp html only*/
+
+html{
+    font-size: clamp(14px, 1vw, 18px);
+}
+
+main{
+    width:100%;
+    align-items: center;
+    @include flex-col();
+
+    section{
+        max-width: 2000px;
+        width:100%;
+        @include flex-col(0.8rem);
+        padding:0.6rem;
+
+        .top{
+            width:100%;
+
+            img{
+                width:100%;
+                border-radius: 10px;
+            }
+        }
+
+        .bottom{
+            background-color: $color-lightDark;
+            @include flex-col(3.5rem);
+            padding:1.5rem;
+            border-radius: 10px;
+
+            .text{
+                @include flex-col(0.7rem);
+
+                h1{
+                    font-weight: 400;
+                    letter-spacing: -1px;
+                    line-height: 1.3;
+                    font-size: 2rem;
+                    text-transform: uppercase;
+                }
+
+                p{
+                    font-weight:100;
+                    line-height: 1.5;
+                    opacity: 0.88;
+                    font-size: 1.35rem;
+                }
+
+                button{
+                    width:fit-content;
+                    border:none;
+                    outline: none;
+                    padding:0.7rem 1rem; 
+                    border-radius: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width:600px){
+    main{
+        section{
+            flex-direction: row;
+            padding:1rem 2rem;
+            gap:1rem;
+
+            .top,
+            .bottom{
+                width:50%;
+            }
+
+            .bottom{
+                justify-content: space-between;
+                padding:3rem;
+
+                .text{
+                    gap:1.5rem;
+
+                    h1{
+                        font-size: 3.5rem;
+                    }
+
+                    p{
+                        width:80%;
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+        }
+    }
+}
