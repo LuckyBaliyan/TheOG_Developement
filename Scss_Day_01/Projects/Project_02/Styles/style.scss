@@ -9,6 +9,7 @@
 html,body{
     width:100%;
     height:100%;
+    overflow-x: hidden;
 }
 
 
@@ -77,6 +78,24 @@ body{
     gap:$gap;
 }
 
+@mixin bottom(){
+    background-color: $color-lightDark;
+    border-radius: 0.7rem;
+}
+
+@mixin card($backgroundImg){
+    @include flex-col();
+    justify-content: space-between;
+    padding: 1.5rem 0.8rem;
+    background-image: url($backgroundImg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1;
+    border-radius: 0.7rem;
+    overflow: hidden;
+}
+
 /*As we use rem every where which is related to root element font-size so 
 rather than clamping evry tag we clamp html only*/
 
@@ -89,7 +108,7 @@ main{
     align-items: center;
     @include flex-col();
 
-    section{
+    section.view1{
         max-width: 2000px;
         width:100%;
         @include flex-col(0.8rem);
@@ -105,10 +124,9 @@ main{
         }
 
         .bottom{
-            background-color: $color-lightDark;
+            @include bottom();
             @include flex-col(3.5rem);
             padding:1.5rem;
-            border-radius: 10px;
 
             .text{
                 @include flex-col(0.7rem);
@@ -138,11 +156,191 @@ main{
             }
         }
     }
+
+    section.view2{
+        @include flex-col(1rem);
+        width:100%;
+        padding:1rem;
+        .top,.bottom{
+            display: flex;
+            width:100%;
+            justify-content: space-around;
+
+            .element{
+                text-align: center;
+                @include flex-col(0.5rem);
+                small{
+                    opacity: 0.8;
+                }
+                h2{
+                    font-size: 3rem;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+
+    section.view3{
+        width: 100%;
+        padding:1rem;
+        @include flex-col(1rem);
+
+        .top{
+            width:100%;
+            img{
+                width: 100%;
+                height:100%;
+                object-fit: cover;
+                object-position: top;
+                border-radius: 0.7rem;
+            }
+        }
+
+       .bottom{
+            @include bottom();
+            @include flex-col(3.5rem);
+            padding:1.5rem;
+
+            .text{
+                @include flex-col(0.7rem);
+
+                h1{
+                    font-weight: 400;
+                    letter-spacing: -1px;
+                    line-height: 1.3;
+                    font-size: 2rem;
+                    text-transform: uppercase;
+                }
+
+                p{
+                    font-weight:100;
+                    line-height: 1.5;
+                    opacity: 0.88;
+                    font-size: 1.30rem;
+                }
+            }
+        }
+    }
+    
+    section.view4{
+        width: 100%;
+        padding:1rem;
+        @include flex-col(1rem);
+
+        .top{
+            width:100%;
+            img{
+                width: 100%;
+                height:100%;
+                object-fit: cover;
+                object-position: top;
+                border-radius: 0.7rem;
+            }
+        }
+
+         .bottom{
+            @include bottom();
+            @include flex-col(3.5rem);
+            padding:1.5rem;
+
+            .text{
+                @include flex-col(0.7rem);
+
+                h1{
+                    font-weight: 400;
+                    letter-spacing: -1px;
+                    line-height: 1.3;
+                    font-size: 2rem;
+                    text-transform: uppercase;
+                }
+
+                p{
+                    font-weight:100;
+                    line-height: 1.5;
+                    opacity: 0.88;
+                    font-size: 1.30rem;
+                }
+            }
+        }
+
+    }
+
+    .team{
+        font-weight: 500;
+    }
+
+    section.view5{
+        display:flex;
+        flex-wrap: wrap;
+        gap:1rem;
+        width:100%;
+        padding:1rem;
+
+        .card{
+           width:100%;
+           .top{
+            display: flex;
+            width:100%;
+            justify-content: end;
+            gap:1rem;
+            filter: brightness(150%);
+
+            .icon{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color:#d7d0d02c;
+                backdrop-filter: blur(16px);
+                border-radius: 50%;
+                width:3rem;
+                padding:1rem;
+                height: 3rem;
+                border:1px solid #ffffff37;
+
+                i{
+                    font-size: 1.5rem;
+                    font-weight:100;
+                    color:#dbd9d9;
+                }
+            }
+
+           }
+
+           .bottom{
+            display: flex;
+            justify-content: space-between;
+            width:100%;
+            padding:1.5rem 1rem;
+            background-color: #12121221;
+            backdrop-filter: blur(16px);
+            border-radius: 4px;
+            align-items: center;
+            gap:1rem;
+
+            p{
+                color:#f4f2ed !important;
+                text-transform: uppercase;
+            }
+
+            p:nth-child(1){
+                font-size: 1.5rem;
+            }
+           }
+        }
+
+        .card1{
+            @include card('../assets/images/card1.webp');
+        }
+
+        .card2{
+            @include card("../assets/images/card2.jpg");
+        }
+    }
 }
 
 @media (min-width:600px){
     main{
-        section{
+        section.view1{
             flex-direction: row;
             padding:1rem 2rem;
             gap:1rem;
@@ -170,6 +368,75 @@ main{
                 }
             }
 
+        }
+
+        section.view2{
+            flex-direction: row;
+            padding:1rem 4rem;
+        }
+
+        section.view3{
+            flex-direction: row-reverse;
+            max-height: 100vh;
+            padding:1rem 2rem;
+            gap:1rem;
+
+            .top,.bottom{
+                width:50%;
+            }
+
+            .bottom{
+                justify-content: space-between;
+                padding:2rem;
+
+               .text{
+                h1{
+                    font-size: 3.3rem;
+                }
+               }
+
+              .paragraphs{
+                display: flex;
+                justify-content: space-between;
+                gap:1rem;
+                p{
+                    font-size: 1rem;
+                    width:90%;
+                }
+              }
+            }
+        }
+
+        section.view4{
+            flex-direction: row;
+            max-height: 100vh;
+            padding:1rem 2rem;
+            gap:1rem;
+
+            .top,.bottom{
+                width:50%;
+            }
+
+            .bottom{
+                justify-content: space-between;
+                padding:2rem;
+
+               .text{
+                h1{
+                    font-size: 3.3rem;
+                }
+               }
+
+              .paragraphs{
+                display: flex;
+                justify-content: space-between;
+                gap:1rem;
+                p{
+                    font-size: 1rem;
+                    width:90%;
+                }
+              }
+            }
         }
     }
 }
