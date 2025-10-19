@@ -12,6 +12,32 @@
 </head>
 <body>
     <main>
+        <nav>
+            <h1>ALVY</h1>
+            <div class="nav-right">
+            <ul>
+                <li>Projects</li>
+                <li>Services</li>
+                <li>Studio</li>
+                <li>Pages</li>
+                <li>Cart <span>0</span></li>
+            </ul>
+            <button>GET IN TOUCH</button>
+            </div>
+            <div class="hb">
+                <i class="ri-menu-line"></i>
+                <div class="overlay">
+                    <button>Products</button>
+                    <button>Services</button>
+                    <button>Studio</button>
+                    <button>Jobs</button>
+                    <button>Blog</button>
+                    <button>Shop</button>
+                    <button>Contact</button>
+                    <button>More Templates <input type="checkbox"></button>
+                </div>
+            </div>
+        </nav>
         <section class="view1">
             <div class="top">
                <img src="assets/images/hero.webp" alt="">
@@ -30,6 +56,7 @@
                </div>
             </div>
         </section>
+
         <section class="view2">
             <div class="top">
                 <div class="element">
@@ -139,7 +166,119 @@
                     <p>Marketing</p>
                 </div>
              </div>
+              <div class="card card3">
+                <div class="top">
+                  <div class="icon">
+                    <i class="ri-twitter-line"></i>
+                  </div>
+                  <div class="icon">
+                    <i class="ri-instagram-line"></i>
+                  </div>
+                  <div class="icon">
+                    <i class="ri-behance-line"></i>
+                  </div>
+                </div>
+                <div class="bottom">
+                    <p>Marvin Makinne</p>
+                    <p>Video</p>
+                </div>
+             </div>
+             <div class="card card4">
+             </div>
+             <div class="card card5">
+               <div class="text">
+                <p>Join Our Team</p>
+                <br>
+                <h1>Want to Change <br> The Future Of Fashion</h1>
+               </div>
+               <button>Join Now</button>
+             </div>
+             <div class="card card6">
+                <div class="text">
+                    <p>CONTACT</p>
+                    <h1>Let's Make Your <br> Fashion Brand Shine</h1>
+                </div>
+                <button>
+                    Get In Touch
+                </button>
+             </div>
+        </section>
+
+        <section class="view6">
+            <div class="topi">
+                <p>ALVY</p>
+                <div class="icons">
+                    <div class="icon">
+                    <i class="ri-twitter-line"></i>
+                  </div>
+                  <div class="icon">
+                      <i class="ri-instagram-line"></i>
+                    </div>
+                  <div class="icon">
+                      <i class="ri-behance-line"></i>
+                  </div>
+                </div>
+            </div>
+            <div class="mid">
+                <div class="list list1">
+                    <p>Pages</p>
+                    <ul>
+                        <li>Home</li>
+                        <li>Services</li>
+                        <li>Studio</li>
+                        <li>Job</li>
+                        <li>Contact</li>
+                    </ul>
+                    <button>More Templates</button>
+                </div>
+                <div class="list list2">
+                    <p>CMS</p>
+                    <ul>
+                        <li>Projects</li>
+                        <li>Project Single</li>
+                        <li>Blog</li>
+                        <li>Blog Single</li>
+                        <li>Shop</li>
+                        <li>Shop Single</li>
+                    </ul>
+                </div>
+                <div class="list list3">
+                    <p>Utility Pages</p>
+                    <ul>
+                        <li>404 Error</li>
+                        <li>Password Protection</li>
+                        <li>Style Guide</li>
+                        <li>Licence</li>
+                        <li>Stroy Telling</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom">
+                <p>Redesigned By Lucky Baliyan</p>
+                <p>&copy; Original by <u>Pawel Gola</u> - Powered by Webflow</p>
+            </div>
         </section>
     </main>
+
+    <!-- Lenis Setup i used it optionally for smooth scrolling experience-->
+    <script src="https://unpkg.com/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
+    <script>
+       const lenis = new Lenis({
+         duration: 1.2,
+         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+         smooth: true,
+         direction: 'vertical',
+         gestureDirection: 'vertical',
+         smoothTouch: false,
+         touchMultiplier: 2,
+       });
+     
+       function raf(time) {
+         lenis.raf(time);
+         requestAnimationFrame(raf);
+       }
+     
+       requestAnimationFrame(raf);
+    </script>
 </body>
 </html>
