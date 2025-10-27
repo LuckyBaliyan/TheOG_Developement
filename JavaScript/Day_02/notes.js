@@ -160,3 +160,25 @@ console.log(`
 console.log("Mighty Raju ".split("g"));
 console.log("Hello World".replaceAll("H","J"));
 
+
+/*
+
+🔹 5. Extra Industry-Level Tips 💡
+
+Always declare variables at the top of their scope (good practice, readability).
+
+Use const-first approach → agar change karna pade to hi let.
+
+Prefer template literals for any string that has dynamic data.
+
+Avoid var unless maintaining legacy code.
+
+Use console.table() for debugging API responses or database records.
+
+Use strict equality (===) to avoid type coercion issues.
+
+Don’t forget TDZ (Temporal Dead Zone) concept — JS runtime variables ko 
+declare hone se pehle access nahi karne deta (let & const).
+
+*/
+
