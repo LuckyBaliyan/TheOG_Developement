@@ -49,7 +49,7 @@ console.log(NaN === NaN); // False because ironically its  a  miscumputed number
 //in ECMASCRIPT that NaN == NaN is always false
 
 console.log(Math.sqrt(-1)) // NaN
-console.log(typeof(null)); // Onject (bug in Js)
+console.log(typeof(null)); // Object (bug in Js)
 
 
 // Infinity
