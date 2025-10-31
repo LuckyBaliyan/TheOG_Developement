@@ -1,5 +1,3 @@
-//
-
 /*
 defer  used in js script tag so that our js loads only after the dom
 */ 
@@ -49,5 +47,28 @@ console.log(obj1,obj2);
 obj2.name = 'surya'
 console.log(obj1,obj2);
 
+//Memory Storage: Stack vs Heap
 
+/*
+Primitive types store hote hain stack memory me (fast, copy-by-value).
+Reference types store hote hain heap memory me (objects ka address stack me store hota hai).
+Interview question: “Why does changing one object affect the other?”
+→ Because both point to the same heap memory address.
+*/
 
+//Type Conversion (Implicit vs Explicit)
+
+/*
+JS dynamically typed hai → type conversion automatic hota hai (coercion).
+Example: '5' + 2 = '52' (string concat), but '5' - 2 = 3 (numeric subtraction).
+Interview tip: Hamesha explicit conversion karo (Number(), String()) to avoid bugs.
+*/
+
+/*
+NaN is the only value in JS that is not equal to itself.
+
+NaN === NaN // false
+isNaN(NaN) // true
+
+Interview tip: Ye ek common gotcha hai jo confusion create karta hai.
+*/
