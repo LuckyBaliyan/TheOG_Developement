@@ -133,7 +133,6 @@ void (console.log("test")); // prints "test", returns undefined
 //Shallow copy vs Deep copy:-
 
 //Shallow copy copy the refrence of the outer object but what if we have another object inside 
-
 const obj2 = {
     name:"xyz",
     address:{city:"Noida"}
@@ -147,12 +146,14 @@ obj3.address.city = "Delhi";
 
 console.log(obj2,obj3); // city changes in obj2 as well
 
-//but if we want to make it completely copied 
+//but if we want to make it completely copied Deep Copy 
 
 const obj4 = structuredClone(obj2);
 obj4.address.city = "Chennai";
 
 console.log(obj2,obj3,obj4);
+
+//Next on Day_06
 
 
 
