@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register_Page</title>
+</head>
+<body>
+    <main>
+        <section class="container" id="form-container">
+            <h2>Register</h2>
+            <form>
+                <label for="Name">Name</label>
+                <input class="name" type="text" name="name" placeholder="Enter Your Name" required>
+
+                <label for="Email">Email</label>
+                <input class="email" type="email" name="email" placeholder="Enter Your Email" required>
+
+                <label for="">PassWord</label>
+                <input class="pass" type="password" name="password" placeholder="enter your password" required>
+
+                <label for="">Confirm Password</label>
+                <input class="re-pass" type="password" name="re-password" placeholder="re enter above password" required>
+            </form>
+            <button type="submit">Register</button>
+            <a href="#Login">Already have an Account? Login</a>
+            <p class="error-class"></p>
+        </section>
+    </main> 
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

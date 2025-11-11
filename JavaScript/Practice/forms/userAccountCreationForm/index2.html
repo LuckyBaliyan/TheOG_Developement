@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Account Creation Form</title>
+  <style>
+    /* ====== Basic Reset ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* ====== Form Styling ====== */
+    form {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #007BFF;
+    }
+
+    button {
+      width: 100%;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* ====== Message Styling ====== */
+    .error-class {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #b22222;
+    }
+
+    .display-none {
+      display: none;
+    }
+
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <form id="signupForm">
+    <h2>Create Account</h2>
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" class="name" placeholder="Enter your full name">
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" class="email" placeholder="Enter your email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" class="pass" placeholder="Enter password (min 6 chars)">
+
+    <label for="repass">Re-enter Password</label>
+    <input type="password" id="repass" class="re-pass" placeholder="Re-enter password">
+
+    <button type="submit">Create Account</button>
+
+    <p class="error-class display-none"></p>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('signupForm');
+
+      const fields = {
+        name: document.querySelector('.name'),
+        email: document.querySelector('.email'),
+        passWord: document.querySelector('.pass'),
+        rePassword: document.querySelector('.re-pass'),
+      };
+
+      const messageBox = document.querySelector('.error-class');
+
+      // Helper to show messages
+      function showMessage(msg, isSuccess = false) {
+        messageBox.textContent = msg;
+        messageBox.classList.remove('display-none');
+        messageBox.classList.toggle('success', isSuccess);
+      }
+
+      function clearMessage() {
+        messageBox.classList.add('display-none');
+        messageBox.textContent = '';
+      }
+
+      // Validation functions
+      function isValidName() {
+        return fields.name.value.trim() !== '';
+      }
+
+      function isValidEmail() {
+        const email = fields.email.value.trim();
+        const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        return emailRegex.test(email);
+      }
+
+      function isValidPassword() {
+        const pass = fields.passWord.value.trim();
+        const rePass = fields.rePassword.value.trim();
+        if (pass.length < 6) return false;
+        if (pass !== rePass) return false;
+        return true;
+      }
+
+      // Handle form submit
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        clearMessage();
+
+        if (!isValidName()) {
+          showMessage('Please enter your full name.');
+          return;
+        }
+
+        if (!isValidEmail()) {
+          showMessage('Please enter a valid email address.');
+          return;
+        }
+
+        if (!isValidPassword()) {
+          showMessage('Passwords must match and be at least 6 characters long.');
+          return;
+        }
+
+        // Success
+        showMessage('Account Created Successfully!', true);
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>

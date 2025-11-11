@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog</title>
+  <style>
+    /* ===== Basic Styling ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      color: #333;
+    }
+
+    /* ===== Product Grid ===== */
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* ===== Product Card ===== */
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px 20px;
+    }
+
+    .card-content h3 {
+      font-size: 20px;
+      color: #222;
+      margin: 10px 0;
+    }
+
+    .price {
+      color: #28a745;
+      font-weight: bold;
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🛍 Product Catalog</h1>
+
+  <div class="catalog">
+    <!-- Product 1 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Smartphone" alt="Smartphone">
+      <div class="card-content">
+        <h3>Smartphone</h3>
+        <p class="price">$499</p>
+        <p class="desc">Latest model with advanced camera and fast processor.</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Headphones" alt="Headphones">
+      <div class="card-content">
+        <h3>Wireless Headphones</h3>
+        <p class="price">$99</p>
+        <p class="desc">Noise-cancelling over-ear headphones with 20hr battery.</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Laptop" alt="Laptop">
+      <div class="card-content">
+        <h3>Laptop</h3>
+        <p class="price">$899</p>
+        <p class="desc">Powerful laptop for work, gaming, and creativity.</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Watch" alt="Watch">
+      <div class="card-content">
+        <h3>Smart Watch</h3>
+        <p class="price">$199</p>
+        <p class="desc">Track your fitness, heart rate, and daily activities.</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
