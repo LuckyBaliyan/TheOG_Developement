@@ -30,10 +30,39 @@ console.log(p); //undefined
 var p = 3; //if initialized with const and let will give error
 
 //Hoisting with functions works:-
-test();
+
+test();//Hi
 function test(){
     console.log("Hi");
 }
+
+//But if we decalred a function with a variable so we actually call like this
+
+/*
+
+hello();
+var hello = ()=>{
+    console.log("Hi")
+}
+
+will give :-
+
+var hello;
+hello(); // calling undefined variable hello
+hello = ()=>{console.log("Hi")};
+
+*/
+
+// What variables can be hoisted or what can't :-
+/*
+all can be because the error let and const give is :- can't acess a without initialization insted 
+of its not defined so ya in my openion let cost and var all are hoisted 
+ES6 just give a consdition of TDZ that we can't use them till before the line they initialized
+*/
+
+
+
+
 
 
 
