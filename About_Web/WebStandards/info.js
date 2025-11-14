@@ -50,4 +50,6 @@ JavaScript (ECMAScript) – for interactivity
 DOM (Document Object Model) – for dynamic page manipulation
 WCAG – for web accessibility
 SVG – for scalable graphics
+
+FontEnd Exam at 11/11/2025
 */
