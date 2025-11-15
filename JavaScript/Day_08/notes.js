@@ -66,7 +66,8 @@ function Fibonacci(n){
 
 console.log(Fibonacci(12));
 
-//While Loops
+//While Loops:-
+
 let n = 3;
 while(n>0){
     console.log("Hi");
@@ -75,9 +76,12 @@ while(n>0){
 
 n=6;
 
-//DoWhile
+//DoWhile:-
+
 do{
     console.log(n);
     n--;
 }while(n>=0)
+
+
 
