@@ -107,7 +107,6 @@ missingSequence(45,50);
 
 
 //19. Make an Atm simulator for atMAx 3 widrawls
-
 function widrawalSimulator(amount,maxlimit){
     let dayLimit = maxlimit;
     let currBalance  = 20000;
