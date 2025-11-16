@@ -172,11 +172,11 @@ const cl = ()=> setTimeout(function () {
             console.log("Anonymus")
           },200);
 
-cl();  // here the functiob inside setTimeOut is a anonymus function
+//cl();  //here the functiob inside setTimeOut is a anonymus function
 
 
 //HOF - Highet Order Function :- Ya to ek function ek or function return kr de or ya wo accept 
-// kr le ek or function parameter me!
+//kr le ek or function parameter me!
 
 const hof = function(){
     return function abc(){
@@ -184,7 +184,7 @@ const hof = function(){
     }
 }
 
-hof()();  // beacuse we have to call the function return by calling the hof function
+hof()(); //beacuse we have to call the function return by calling the hof function
 //or we can do like 
 
 const returnedByHof = hof();
@@ -200,17 +200,60 @@ abc(function a(){return 9}) // and the function we pass as arguments named callb
 
 
 //Firts Class Functions FCF
-
 //This concept says whichever scriptig language has FCF there we can use functions like variables
 //EX:-
 
 function zdi(a,b){
-    console.log(a(),b);
+    console.log(a(),b);  //21 2
 }
 
 zdi(function zdi2(){return 21},2);
 
 
+//Function Expression Vs Declaration:-
+
+//Expression can't acess outside the block level
+
+const deg =  0.9;
+
+{
+if(true){
+   if(deg > 0.8){
+       Welcome();
+        function Welcome(){
+        console.log("Welcome deg",deg);
+        }
+   }
+   else{
+      //Welcome(); will give us errors
+   }
+
+  // Welcome(); will give us error
+}
+
+}
+
+//Welcome(); will give us erro
+
+//But FOr Declared types
+
+let welcome;
+const deg2 = Math.random()*1;
+
+if(true){
+    if(deg2 > 0.8){
+        welcome = function(){
+            console.log("hello",deg2);
+        }
+    }
+    else{
+        welcome = function(){
+            console.log("bye",deg2);
+        }
+    }
+}
+
+welcome(); // Last updated value for if else blocks 
 
 
 
