@@ -168,7 +168,9 @@ let user = {
 }
 
 let {name:city} = user.address.city;
-console.log(city);
+console.log(city);  //MUMBAI
+
+
 
 
 

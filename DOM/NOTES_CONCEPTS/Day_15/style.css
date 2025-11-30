@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width:100vw;
+}
+
+body{
+    font-family: 'Neue Montreal',sans-serif;
+    background-color: rgb(184, 5, 5);
+}
+
+h1{
+    font-weight: bolder;
+    font-size: 4rem;
+}
+
+.box{
+    width:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(120px);
+    aspect-ratio: 1;
+    border-radius: .3em;
+    background-color: greenyellow;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
