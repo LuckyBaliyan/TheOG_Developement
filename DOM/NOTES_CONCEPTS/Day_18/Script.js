@@ -31,5 +31,8 @@ btn.addEventListener('click',()=>{
        document.body.appendChild(h2);
     },300);
 
+    //Clear interval on a setTimeOut so that it will not stop immidiately.
     setTimeout(()=>{clearInterval(a)},5000);
 });
+
+
