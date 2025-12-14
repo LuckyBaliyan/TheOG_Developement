@@ -1,0 +1,28 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100vw;
+    height: 100%;
+}
+
+body{
+    background-color: #000;
+    cursor: none;
+}
+
+main{
+    position: relative;
+    width:100%;
+    min-height: 100vh;
+}
+
+img{
+    height: 60px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+}
