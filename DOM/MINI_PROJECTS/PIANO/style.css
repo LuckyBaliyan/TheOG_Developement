@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Parisienne&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow-x: hidden;
+}
+
+body{
+    font-family: 'Neue Montreal',sans-serif;
+}
+
+main{
+    height: 100vh;
+    overflow: hidden;
+    background-color:#fff;
+}
+
+h2{
+    text-align: center;
+    font-size: 6rem;
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.piano-container{
+    display: flex;
+    border-top: 1px solid rgb(22, 20, 20);
+    width:100%;
+    height:250px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.key{
+    width:auto;
+    flex: 1;
+    height:100%;
+    background-color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: 0.5px solid rgba(128, 128, 128, 0.396);
+    margin-bottom: 20px;
+    transform: translateY(-8px);
+    border-radius: 7px;
+    position: relative;
+    padding-bottom: 6px;
+    cursor: pointer;
+    z-index: 5;
+    background-color: #fff;
+    box-shadow: 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    transform-origin: top center;
+
+}
+
+.key h2{
+    font-size: 2rem;
+    position: absolute;
+    bottom: 0;
+    left:1/4;
+}
+
+.active {
+  transform: translateY(-6px) scale(1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  background-color: red;
+}
+
+.key:nth-child(3n){
+    background-color: #000;
+    color:#fff;
+}
+
+
