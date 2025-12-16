@@ -53,11 +53,16 @@ document.addEventListener("DOMContentLoaded",()=>{
        return myKey;
     }
 
+
     //adding Event Listner to keyPress
     document.addEventListener('keydown',(e)=>{
-        const key = e.key;
+        const key = e.key.toUpperCase();
         console.log(key);
-        const audi = new Audio(`${getSrc(String(key.toUpperCase()))}`);
+
+        if(e.repeat)return;
+        if(!keyMap[key])return;
+
+        const audi = new Audio(`${getSrc(String(key))}`);
         const domKeys = document.querySelectorAll(".key");
 
         console.log(domKeys);
@@ -69,6 +74,17 @@ document.addEventListener("DOMContentLoaded",()=>{
             } 
         })
         audi.play();
+    });
+
+    //remove the active classState 
+    document.addEventListener('keyup',(e)=>{
+        const key = e.key.toUpperCase();
+
+        document.querySelectorAll(".key").forEach((k)=>{
+            if(k.innerText.trim() === key){
+                k.classList.remove("active");
+            }
+        })
     })
     
 })
