@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
 
 
-    //adding Event Listner to keyPress
+
     document.addEventListener('keydown',(e)=>{
         const key = e.key.toUpperCase();
         console.log(key);
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         audi.play();
     });
 
-    //remove the active classState 
+   
     document.addEventListener('keyup',(e)=>{
         const key = e.key.toUpperCase();
 
