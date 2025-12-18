@@ -7,7 +7,9 @@ const reels = [
     shares: 45,
     comments: 98,
     isFollowed: false,
-    video: 'assets/videos/1.mp4'
+    video: 'assets/videos/1.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Riya Sharma",
@@ -17,7 +19,9 @@ const reels = [
     shares: 120,
     comments: 210,
     isFollowed: true,
-    video: 'assets/videos/2.mp4'
+    video: 'assets/videos/2.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Kabir Verma",
@@ -27,7 +31,9 @@ const reels = [
     shares: 32,
     comments: 54,
     isFollowed: false,
-    video: 'assets/videos/3.mp4'
+    video: 'assets/videos/3.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Ananya Gupta",
@@ -37,7 +43,9 @@ const reels = [
     shares: 210,
     comments: 340,
     isFollowed: true,
-    video: 'assets/videos/4.mp4'
+    video: 'assets/videos/4.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Vihaan Singh",
@@ -47,7 +55,9 @@ const reels = [
     shares: 18,
     comments: 29,
     isFollowed: false,
-    video: 'assets/videos/5.mp4'
+    video: 'assets/videos/5.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Ishita Malhotra",
@@ -57,7 +67,9 @@ const reels = [
     shares: 76,
     comments: 112,
     isFollowed: true,
-    video: 'assets/videos/6.mp4'
+    video: 'assets/videos/6.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Arjun Patel",
@@ -67,7 +79,9 @@ const reels = [
     shares: 40,
     comments: 61,
     isFollowed: false,
-    video: 'assets/videos/7.mp4'
+    video: 'assets/videos/7.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Neha Kapoor",
@@ -77,7 +91,9 @@ const reels = [
     shares: 190,
     comments: 275,
     isFollowed: true,
-    video: 'assets/videos/8.mp4'
+    video: 'assets/videos/8.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Rohit Khanna",
@@ -87,7 +103,9 @@ const reels = [
     shares: 55,
     comments: 89,
     isFollowed: false,
-    video: 'assets/videos/9.mp4'
+    video: 'assets/videos/9.mp4',
+    isLiked:false,
+    isMuted:true,
   },
   {
     userName: "Simran Kaur",
@@ -97,31 +115,36 @@ const reels = [
     shares: 320,
     comments: 512,
     isFollowed: true,
-    video: 'assets/videos/10.mp4'
+    video: 'assets/videos/10.mp4',
+    isLiked:false,
+    isMuted:true,
   }
 ];
 
 const allReels = document.querySelector(".all-reels");
-let sum = ``;
+
+const loadApp = (allReels)=>{
+  let sum = ``;
 
 reels.forEach((reel,i)=>{
+    console.log(reel,i);
     sum += `
        <div class="reel">
-                  <video src=${reel.video} autoplay muted loop></video>
+                  <video class="mute" id=${i} src=${reel.video} autoplay ${reel.isMuted?'muted':''} loop></video>
                   <div class="bottom">
                     <div class="user">
                         <div class="user-acc">
                         <img class="user-img" src=${reel?.userImage ?? 'assets/1.png'} alt="">
                         <h4>${reel.userName}</h4>
                         </div>
-                        <button>${reel.isFollowed?'Following':'Follow'}</button>
+                        <button>${reel.isFollowed?'UnFollow':'Follow'}</button>
                     </div>
                     <p>
                         ${reel.caption}
                     </p>
                   </div>
                   <div class="right">
-                    <div class="like cl">
+                    <div id=${i} class="like cl ${reel.isLiked ? 'liked' : ''}">
                         <h4><i class="ri-heart-line"></i></h4>
                         <h6>${reel.likes}</h6>
                     </div>
@@ -141,7 +164,46 @@ reels.forEach((reel,i)=>{
     `
 })
 
-console.log(sum);
+
 allReels.innerHTML = sum;
+}
+loadApp(allReels);
+
+const toggleLike = (reel,target)=>{
+  if(reel.isLiked){
+    reel.likes -= 1;
+    target.classList.remove('liked');
+    return false;
+  }
+  else{
+    reel.likes += 1;
+    target.classList.add('liked');
+    return true;
+  }
+}
+
+//event bubbling
+allReels.addEventListener('click',(dets)=>{
+  //The target vaue of pointerEvents object can literally give u the child element exactlty where u click exactly
+  console.log(dets.target.id);//gives id of like btn div
+
+  if(dets.target.className === 'mute'){
+    if(reels[dets.target.id].isMuted === false){
+      reels[dets.target.id].isMuted = true;
+    }
+    else{
+      reels[dets.target.id].isMuted = false;
+    }
+    loadApp(allReels);
+    return;
+  }
+
+  //so we can get our complete object using this like btn
+  console.log(reels[dets.target.id]);
+  reels[dets.target.id].isLiked  = toggleLike(reels[dets.target.id],dets.target);
+  loadApp(allReels);
+  console.log(allReels);
+})
+
 
 
