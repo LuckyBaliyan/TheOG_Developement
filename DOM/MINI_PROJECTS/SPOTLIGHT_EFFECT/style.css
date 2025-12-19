@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background-color: #171517;
+    background-image: url('./assets/Silhouette\ Portrait.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+:root{
+    --red:red;
+    --x:200px;
+    --y:200px;
+}
+
+
+.box{
+    height: 100%;
+    width: 100%;
+
+/* background:linear-gradient(in hsl, rgb(208, 208, 208), red, purple);*/
+
+    /* Here in oklab, in hsl, in hsl longer hue, 0deg, .25turn are the predefinded functions 
+    in css for color mixiings
+*/
+
+  /* background:radial-gradient(130px at var(--x) var(--y), transparent 0%, rgba(0, 0, 8, 0.988));*/
+  background:
+  radial-gradient(
+    250px at var(--x) var(--y),
+    rgba(255,255,255,0.06),
+    rgba(0,0,8,0.98) 75%
+  );
+
+  /* takes radius for first color as 300px
+     radius:- 300px
+     x-coOrdinates:- 100px;
+     y-coOrdinates:- 100px;
+  */
+}
+
+@media (max-width:700px) {
+    body{
+        background-image: url('./assets/Freckled\ Portrait\ Close-Up.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
