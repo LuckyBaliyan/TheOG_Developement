@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    font-family: "Neue Montreal",sans-serif;
+}
+
+body{
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@property --rotate{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes borderAnim {
+    to{
+        --rotate:360deg;
+    }
+}
+
+.card{
+    max-width: 300px;
+    padding-inline:  8px; /* padding from left and right */
+    padding-bottom: 10px;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    border-radius: 16px;
+    border: 5px solid rgba(255, 255, 255, 0);
+    animation: borderAnim 7s;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    transition: all .5s ease;
+}
+
+.card:hover{
+    animation-play-state: running;
+    --rotate:0deg;
+    color:rgba(255, 0, 123);
+    box-shadow: 0 0 60px rgba(255, 0, 123);
+    background: linear-gradient( #000) padding-box, /* linear-gradient only covers content + padding not border */
+    conic-gradient(from var(--rotate),#000,rgba(255, 0, 123), #000, #000, #000, #000) border-box; /* will covers thing untill border */
+    cursor: pointer;
+}
+
+.card img{
+    width: 100%;
+}
+
+.card p{
+    line-height: 1;
+    font-size: 14px;
+}

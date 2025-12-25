@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    font-family: "Neue Montreal",sans-serif;
+}
+
+/* Custome properties in css */
+@property --bgColor {
+    syntax: "<color>";
+    initial-value: red;
+    inherits: false;
+}
+
+body{
+    background-color: var(--bgColor);
+    animation: animBg 10s;
+}
+
+@keyframes animBg {
+    from{
+        --bgColor:red;
+    }
+    to{
+        --bgColor:blue;
+    }
+}
