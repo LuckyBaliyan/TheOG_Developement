@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body{
+    font-family: "Neue Montreal",sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: #000;
+}
+
+.box{
+    width:200px;
+    aspect-ratio: 1;
+    margin: 4px;
+    transition: all .3s linear;
+    cursor: pointer;
+}
+
+.red{
+    background-color: orangered;
+}
+
+.blue{
+    background-color: blueviolet;
+}
+
+.green{
+    background-color: lightseagreen;
+}
+
+
+/* body agar tere paas koi ek bhi esa .box hai jispe abhi hover hora hai
+to tumhare andar jitne box hai unka scale .8 krdo */
+
+body:has(.box:hover) .box{
+    transform: scale(0.8);
+    opacity: 0.6;
+}
+
+body .box:hover{
+    transform: scale(1.2) !important;
+    opacity: 1 !important;
+}
