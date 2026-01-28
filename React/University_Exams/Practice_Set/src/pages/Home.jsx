@@ -1,6 +1,9 @@
 import React from 'react'
 import { Q1 } from '../components/Q1'
 import Button from '../ui/btns/Button'
+import Auth from '../components/Auth'
+import UserName from '../components/UserName'
+import ProductCard from '../components/Product'
 
 const Home = () => {
   return (
@@ -14,6 +17,14 @@ const Home = () => {
           classType={'secondary'}
           onClick={()=>alert("Secondary btn clicked!")}
           />
+          <br />
+          <Auth />
+          <br />
+          <UserName />
+          <br />
+          <div className='flex'>
+             <ProductCard />
+          </div>
         </div>
     )
 }
