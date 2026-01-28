@@ -13,7 +13,7 @@ const Navbar = () => {
         <li onClick={()=>navigate('/contact')}><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-  );
+  )
 };
 
 export default Navbar;
