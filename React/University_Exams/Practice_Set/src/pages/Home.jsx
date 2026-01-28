@@ -4,6 +4,7 @@ import Button from '../ui/btns/Button'
 import Auth from '../components/Auth'
 import UserName from '../components/UserName'
 import ProductCard from '../components/Product'
+import StudentsGrid from '../components/StudentsGrid'
 
 const Home = () => {
   return (
@@ -24,6 +25,9 @@ const Home = () => {
           <br />
           <div className='flex'>
              <ProductCard />
+          </div>
+          <div>
+            <StudentsGrid />
           </div>
         </div>
     )
