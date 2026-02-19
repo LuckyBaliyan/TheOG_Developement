@@ -4,10 +4,10 @@ const StudentsGrid = () => {
     const [isPresent,setIsPresent] = useState(Array(50).fill(false));
 
     const toggleAddtendence = (indx)=>{
-        const update = [...isPresent];
-        update[indx] = !update[indx];
+        const update = [...isPresent]; // make copy of all students
+        update[indx] = !update[indx]; // udate the state at ith std at which we click
 
-        setIsPresent(update);
+        setIsPresent(update); // update the array of stds with new copy
     }
 
   return (
@@ -17,8 +17,8 @@ const StudentsGrid = () => {
                 backgroundColor: isPresent[i] ? "green" : "",
               }}>
                 <input type='checkbox'
-                checked = {isPresent[i]}
-                onClick={()=>toggleAddtendence(i)}
+                checked = {isPresent[i]} // becuase its array now so isPresent[i]
+                onClick={()=>toggleAddtendence(i)} // pass the present std idx
                 className='check'
                 />
             </div>
