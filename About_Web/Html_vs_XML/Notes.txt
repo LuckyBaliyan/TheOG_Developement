@@ -1,0 +1,65 @@
+TOPICP:- HTML VS XML
+
+HTML:-
+
+1.Html is the (Hyper Text Markup language) used to display data in a webPage.
+2.It is not used to transfer the data.
+3.It is the combination of hyperText and markup language the hypertext consist of
+links to another webpages or websites and markup means the structure related info
+and data in the webpage.
+
+XML:-
+
+1.Extensible Markup Language (xml) is a versitile markup language used to carry
+and storing data
+2.It allows users to make up their custome own tags and carring their own data
+making it flexible.
+3.used to store arbritrary data structures used in webServices
+
+Diff Points:-
+
+1.Html:- Static in nature
+1.Xml:- dynamic in nature
+
+2.Html:- allows errors
+2.xml:- dos't allows errors
+
+3.Html:- .Html
+3.Html:- .xml
+
+4.Html:- not Case sensitive
+5.xml:- Case sensitive
+
+5.Html:- predefined tags
+5.Xml:- user defined tags
+
+6.Html:- limited number of tags
+6.xml:- extensive i.e infinite tags can be defined
+
+7.Html:- used for displaying data
+7.xml:- used for describing data
+
+8.Html:- don't require any additional library to parse the js code to Html
+8.xml:- requires DOM for parsing js codes and to mapping of Text
+
+example: XML:- 
+<contactinfo> 
+    <address category = "college"> 
+        <name>G4G</name> 
+        <College>Geeksforgeeks</College> 
+        <mobile>2345456767</mobile> 
+    </address> 
+</contactinfo> 
+
+example: Html:-
+<html>
+  <head>
+    <title>HTML VS XML</title>
+  </head>
+  <body>
+    <main>
+       <h1>Hello World !</h1>
+    </main>
+   </body>
+</html>
+
