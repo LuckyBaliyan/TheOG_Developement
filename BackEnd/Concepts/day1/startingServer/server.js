@@ -11,4 +11,4 @@ server.get("/about",function(req,res){
     res.send("About Page!");
 });
 
-server.listen(3000); // server ko start karta hai 
+server.listen(3000);// server ko start karta hai 

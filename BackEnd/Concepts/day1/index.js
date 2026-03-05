@@ -11,7 +11,7 @@ console.log(catMe());
 
 //if we pass a name 
 
-console.log(catMe('nyan'));  //gives a prebuilt nayan cat
+console.log(catMe('nyan'));//gives a prebuilt nayan cat
 
 
 
