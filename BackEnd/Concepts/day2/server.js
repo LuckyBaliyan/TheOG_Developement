@@ -6,7 +6,7 @@ server.get("/",(req,res)=>{
     res.send("Hello World!");
 })
 
-//before cant get /about 
+//before cant get /about on get req on localhost:3000/about 
 
 //after
 
