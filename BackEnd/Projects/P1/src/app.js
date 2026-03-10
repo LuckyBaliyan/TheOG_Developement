@@ -2,6 +2,8 @@
 
 const express = require("express");
 const app = express();
+const noteModel = require("./models/notes.model");
+const notesModel = require("./models/notes.model");
 
 
 app.use(express.json());//middleware from express
@@ -9,7 +11,7 @@ app.use(express.json());//middleware from express
 const notes = [];
 
 // create a Note
-app.post("/notes",(req,res)=>{
+app.post("/notes",async (req,res)=>{
     console.log(req.body); 
     //will get undefined when sended from postman in JSON format
 
@@ -17,22 +19,32 @@ app.post("/notes",(req,res)=>{
     //JSON format data so we need to use a middleware by express
     //server.use(express.json());
 
-    notes.push(req.body);
+   /* notes.push(req.body);
     console.log(notes);
     //res.send("note Created!!");
+    */
+    const {title,description} = req.body;
+
+    const note = await noteModel.create({
+        title,description
+    });
 
     res.status(201).json({
-        message:"Note created Sucessfully!"
+        message:"Note created Sucessfully!",
+        note
     });
 
 });
 
 //get all the current notes
-app.get("/notes",(req,res)=>{
+app.get("/notes",async (req,res)=>{
     //res.send(notes);
 
+    const notes2 = await notesModel.find();
+
+
     res.status(200).json({
-        notes:notes
+        notes:notes2
     });
 
 })
