@@ -2,16 +2,15 @@
 
 const express = require("express");
 const app = express();
-const noteModel = require("./models/notes.model");
 const notesModel = require("./models/notes.model");
+const cors = require("cors");
 
 
+app.use(cors());
 app.use(express.json());//middleware from express
 
-const notes = [];
-
 // create a Note
-app.post("/notes",async (req,res)=>{
+app.post("/api/notes",async (req,res)=>{
     console.log(req.body); 
     //will get undefined when sended from postman in JSON format
 
@@ -25,7 +24,7 @@ app.post("/notes",async (req,res)=>{
     */
     const {title,description} = req.body;
 
-    const note = await noteModel.create({
+    const note = await notesModel.create({
         title,description
     });
 
@@ -37,7 +36,7 @@ app.post("/notes",async (req,res)=>{
 });
 
 //get all the current notes
-app.get("/notes",async (req,res)=>{
+app.get("/api/notes",async (req,res)=>{
     //res.send(notes);
 
     const notes2 = await notesModel.find();
@@ -50,28 +49,31 @@ app.get("/notes",async (req,res)=>{
 })
 
 //delete note 
-app.delete("/notes/:index",(req,res)=>{
-    console.log(req.params.index);
-    delete notes[req.params.index];
-
+app.delete("/api/notes/:id",async (req,res)=>{
+    const id = req.params.id;
+    await notesModel.findByIdAndDelete(id);
+    
+    //delete notes[req.params.index];
     //res.send("Note Deleted!");
-    res.status(204).json({
-        message:"Note Deleted Sucessfully!"
+    res.status(200).json({
+        message:"Note Deleted Sucessfully!",
     })
 
 });
 
-//PATCH Notes/:index
+//PATCH Notes/:id
 //req.body = {description:"simple modified description"}
-app.patch("/notes/:index",(req,res)=>{
-    notes[req.params.index].description = req.body.description;
+app.patch("/api/notes/:id",async (req,res)=>{
+    //notes[req.params.index].description = req.body.description;
+    
+    const id = req.params.id;
+    const {description} = req.body;
 
-    //res.send("Note Updated Sucessfully!");
+    await notesModel.findByIdAndUpdate(id,{description});
 
     res.status(200).json({
-        message:"Note Updated!",
-        updtaedNote:notes[req.params.index],
-    })
+        message:"Note Updated!"
+    });
 
 });
 
