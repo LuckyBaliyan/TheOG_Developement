@@ -26,15 +26,40 @@ const App = () => {
 
   console.log(baseUri);
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  function toggleForm(event){
+    if (event) event.preventDefault();
+    setIsFormOpen(prev => !prev);
+  }
+
+  function getNotes(){
+    try{
+      axios.get(baseUri).then((res) => {
+        setNotes(res.data.notes);
+      });
+    }
+    catch (error){
+      setNotes(prev => [prev,...notes]);
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    axios.get(baseUri).then((res) => {
-      setNotes((prev) => [...prev, ...res.data.notes]);
-    });
+    getNotes();
   }, []);
 
 
   return (
-    <div className="notes">
+   <div>
+      <form className={`form ${isFormOpen ? '' : 'toggle'}`}>
+        <input type="text" placeholder='Title'/>
+        <textarea type="text" placeholder='Description' maxLength={300} 
+        draggable='false'/>
+        <button className='btn' type="button" onClick={toggleForm}>Create</button>
+      </form>
+      <div className={`overlay ${isFormOpen ? '' : 'toggle'}`}></div>
+      <div className="notes">
       {
         notes.map((note,i)=>(
           <div className="note" key={i}>
@@ -43,7 +68,13 @@ const App = () => {
           </div>
         ))
       }
-    </div>
+      </div>
+      <div className='btm'>
+        <button onClick={toggleForm} className='btn'>
+          What's About Today ?
+        </button>
+      </div>
+   </div>
   )
 }
 
