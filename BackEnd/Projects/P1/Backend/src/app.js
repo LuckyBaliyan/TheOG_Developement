@@ -4,10 +4,12 @@ const express = require("express");
 const app = express();
 const notesModel = require("./models/notes.model");
 const cors = require("cors");
+const path = require("path");
 
 
 app.use(cors());
 app.use(express.json());//middleware from express
+app.use(express.static("./public")); //use to handle the file path on wildcard api
 
 // create a Note
 app.post("/api/notes",async (req,res)=>{
@@ -75,6 +77,11 @@ app.patch("/api/notes/:id",async (req,res)=>{
         message:"Note Updated!"
     });
 
+});
+
+
+app.use('*name',(req,res)=>{
+    res.sendFile(path.join(__dirname,"..","/public/index.html"));
 });
 
 module.exports = app;
