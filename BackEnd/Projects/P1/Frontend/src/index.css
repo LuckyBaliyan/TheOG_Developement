@@ -4,6 +4,7 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 html,body{
@@ -29,6 +30,7 @@ body{
 }
 
 .note{
+  position: relative;
   padding: 1.4rem 1.5rem 1.6rem;
   border-radius: 20px;
   color: #fff;
@@ -145,6 +147,52 @@ body{
   margin-top: auto;
   display: flex;
   justify-content: center;
+}
+
+.del{
+  position: absolute;
+  top:0;
+  right: 0;
+  margin: 1em;
+  display: none;
+  transition: all 280ms ease;
+  cursor: pointer;
+}
+
+
+.up{
+  position: absolute;
+  bottom:0;
+  right: 0;
+  margin: 1em;
+  display: none;
+  transition: all 280ms ease;
+  cursor: pointer;
+}
+
+.sv{
+  transform: scale(1.2);
+  margin: 1.2em;
+}
+
+.cr{
+  font-weight: 500;
+  margin: 1.2em;
+  transform: scale(1.2);
+  bottom:30px;
+}
+
+.note:hover .del{
+  display: block;
+}
+
+
+.note:hover .up{
+  display: block;
+}
+
+.del:hover, .up:hover{
+  opacity: .6;
 }
 
 @media (max-width: 640px){
