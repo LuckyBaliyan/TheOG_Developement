@@ -30,10 +30,11 @@ authRouter.post("/register",async (req,res)=>{
         id:user._id,
         email:user.email
         },
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET, 
+        {expiresIn: "1h"}
     )
 
-    res.cookie("jwt_token",token);
+    res.cookie("jwt_token",token); //stores in key-value pair at client-side
 
     res.status(201).json({
         message:"registered sucessfully!",
@@ -91,7 +92,9 @@ authRouter.post("/login",async (req, res)=>{
         process.env.JWT_SECRET
     );
 
-    res.cookie("jwt_token", token);
+    res.cookie("jwt_token", token); 
+    // we are just sending cookies as response nothing with storing at client side that will
+    // be handled at clientSide i.e React-part
 
     return res.status(200).json({
         message:"Sucessfully logged In!",
@@ -99,6 +102,25 @@ authRouter.post("/login",async (req, res)=>{
         Usertoken:token
     });
 
+})
+
+/**
+ * Api to verify user 
+ */
+
+authRouter.get('/get-me', async (req, res)=>{
+    const token = req.cookies.jwt_token;
+
+    //to verify the token is created by our server or not 
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = await userModel.findById(decoded.id);
+
+    res.json({
+        name:user.name,
+        email:user.email
+    });
+    
 })
 
 module.exports = authRouter;
