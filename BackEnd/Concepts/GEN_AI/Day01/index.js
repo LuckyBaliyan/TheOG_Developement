@@ -1,7 +1,11 @@
 import "dotenv/config"
 import readline from "readline"
 import { ChatMistralAI } from "@langchain/mistralai"
-import { HumanMessage } from "langchain";
+import { HumanMessage, tool } from "langchain";
+import { sendEmail } from "./mail.service.js";
+import * as z from "zod"
+
+import { createAgent } from "langchain";
 
 /**
  * Creates and configures a readline interface for reading user input from stdin
@@ -41,9 +45,38 @@ const model = new ChatMistralAI({
   apiKey: process.env.MISTRAL_AI_KEY
 });
 
+
 /**
- * 
+ * creating a tool that will be used to send an email using Gmail
+ * this tool will use the Gmail SMTP server to send the email
+*/
+
+const emailTool = tool(
+  sendEmail,
+  {
+    name: "emailTool",
+    description: "Use this tool to send an email",
+    schema: z.object({
+      to: z.string().describe("The recipient's email address."),
+      subject: z.string().describe("The subject line of the email."),
+      text: z.string().describe("The body of the email in plain text."),
+      html: z.string().describe("The body of the email in HTML format.")
+    })
+  }
+)
+
+/**
+ * creating an agent that will use the model to generate responses
  */
+const agent = createAgent({
+  model,
+  tools: [emailTool]
+});
+
+/**
+ * array that will be used to store the messages in the conversation
+*/
+
 const messages = [];
 
 /**
@@ -79,19 +112,19 @@ async function main() {
     messages.push(new HumanMessage(trimmedInput));
 
     // invoking the model with the user input
-    const response = await model.invoke(messages);
+    //const response = await model.invoke(messages);
 
-    messages.push(response);
+    const response = await agent.invoke({ messages })
 
-    console.log("AI:" + response?.content);
+    messages.push(response?.messages?.at(-1)?.content);
+
+    console.log("AI:" + response?.messages?.at(-1)?.content);
   }
 
 }
 
 // Entry point
 main();
-
-console.log(messages);
 
 
 
