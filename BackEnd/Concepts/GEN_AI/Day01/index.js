@@ -1,7 +1,7 @@
 import "dotenv/config"
 import readline from "readline"
 import { ChatMistralAI } from "@langchain/mistralai"
-import { HumanMessage } from "@langchain/core/messages"
+import { HumanMessage } from "langchain";
 
 /**
  * Creates and configures a readline interface for reading user input from stdin
@@ -42,9 +42,7 @@ const model = new ChatMistralAI({
 });
 
 /**
- * Stores the full conversation history as an array of LangChain message objects.
- * Each turn appends a HumanMessage (user) and an AIMessage (model response),
- * so the model always receives the complete context on every invoke() call.
+ * 
  */
 const messages = [];
 
@@ -78,22 +76,22 @@ async function main() {
       continue;
     }
 
-    // Push the user's message into history
     messages.push(new HumanMessage(trimmedInput));
 
-    // Invoke the model with the FULL message history (this is what gives it memory)
+    // invoking the model with the user input
     const response = await model.invoke(messages);
 
-    // Push the AI's response into history so next turn it remembers it too
     messages.push(response);
 
-    console.log(`\nAI: ${response.content}\n`);
+    console.log("AI:" + response?.content);
   }
 
 }
 
 // Entry point
 main();
+
+console.log(messages);
 
 
 
