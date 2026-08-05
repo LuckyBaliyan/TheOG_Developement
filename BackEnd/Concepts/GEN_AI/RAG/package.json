@@ -13,9 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "@langchain/core": "^1.2.4",
-    "@langchain/mistralai": "^1.2.0",
-    "@langchain/textsplitters": "^1.0.1",
-    "dotenv": "^17.4.2",
-    "pdf-parse": "^1.1.4"
+    "@langchain/textsplitters": "^1.0.1"
   }
 }
