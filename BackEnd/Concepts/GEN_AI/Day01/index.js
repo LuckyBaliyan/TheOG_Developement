@@ -98,14 +98,14 @@ async function main() {
     const trimmedInput = userInput.trim();
 
     if (trimmedInput.toLowerCase() === "exit") {
-      console.log("\n👋 Goodbye!");
+      console.log("\n Goodbye!");
       rl.close();
       break;
     }
 
     // Skip empty input
     if (!trimmedInput) {
-      console.log("⚠️  Please enter a message.\n");
+      console.log(" Please enter a message.\n");
       continue;
     }
 
@@ -123,7 +123,7 @@ async function main() {
 
 }
 
-// Entry point
+// lets go!
 main();
 
 
